@@ -18,7 +18,7 @@ export const useBookPile = () => {
   return bookPile
 }
 
-const bookPileProvider = ({ children }: { children: React.ReactNode }) => {
+const BookPileProvider = ({ children }: { children: React.ReactNode }) => {
   const [bookPile, setBookPile] = useBookPileState()
   const [fetchedCookies, setFetchedCookies] = useState(false)
 
@@ -43,4 +43,4 @@ const bookPileProvider = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-export default bookPileProvider;
+export default BookPileProvider;
