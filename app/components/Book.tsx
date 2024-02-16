@@ -40,10 +40,10 @@ export default function Book({ book }: BookProps) {
   }
 
   return (
-    <div className="group relative h-32 p-8 flex justify-between border-black rounded-sm" style={{width: `${book.width}%`, backgroundColor: book.colour}}>
+    <div className={`group relative h-20 md:h-32 p-8 flex justify-between border-black rounded-sm ${book.widthString}`} style={{backgroundColor: book.colour}}>
       <div className="flex flex-col items-start self-center">
-        <input type="text" className="bg-transparent text-4xl" value={book.title} onChange={updateTitle} />
-        <input type="text" className="bg-transparent text-sm" value={book.author} onChange={updateAuthor} />
+        <input type="text" className="bg-transparent text-xl lg:text-4xl" value={book.title} onChange={updateTitle} />
+        <input type="text" className="bg-transparent text-xs lg:text-sm" value={book.author} onChange={updateAuthor} />
       </div>
       <div className="hidden absolute bottom-2 right-2  h-8 items-center gap-2 group-hover:flex">
         <ColourPicker book={book} setBookPile={setBookPile} />

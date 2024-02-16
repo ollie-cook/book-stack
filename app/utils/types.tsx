@@ -4,4 +4,5 @@ export type Book = {
   author: string;
   colour: string;
   width: number;
+  widthString: string;
 }

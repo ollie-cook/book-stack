@@ -3,6 +3,14 @@
 import { useBookPile } from "./BookPileContext";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
+const possibleWidths= [
+  "w-[70%] lg:w-[30%]",
+  "w-[75%] lg:w-[35%]",
+  "w-[80%] lg:w-[40%]",
+  "w-[85%] lg:w-[45%]",
+  "w-[90%] lg:w-[50%]"
+]
+
 export default function AddBook() {
   const [bookPile, setBookPile] = useBookPile()
 
@@ -10,6 +18,9 @@ export default function AddBook() {
     const guid = crypto.randomUUID();
 
     const width = Math.floor(Math.random() * (50 - 30 + 1)) + 30;
+    const widthString = `w-[${width}%]`
+
+    const randomNumber = Math.floor(Math.random() * possibleWidths.length);
 
     const newBook = {
       id: guid,
@@ -17,6 +28,7 @@ export default function AddBook() {
       author: "Author",
       colour: "#16A5A5",
       width: width,
+      widthString: possibleWidths[randomNumber]
     }
 
     setBookPile([...bookPile, newBook])
