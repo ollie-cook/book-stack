@@ -1,7 +1,8 @@
 'use client'
 
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { type Book } from "@/app/utils/types";
+import Cookies from "js-cookie"
 
 const useBookPileState = () => {
   return useState<Book[]>([]);
@@ -19,6 +20,21 @@ export const useBookPile = () => {
 
 const bookPileProvider = ({ children }: { children: React.ReactNode }) => {
   const [bookPile, setBookPile] = useBookPileState()
+  const [fetchedCookies, setFetchedCookies] = useState(false)
+
+  useEffect(() => {
+    const cookie = Cookies.get('books')
+    if (cookie) {
+      setBookPile(JSON.parse(cookie))
+    }
+    setFetchedCookies(true)
+  },[])
+
+  useEffect(() => {
+    if (fetchedCookies == true) {
+      Cookies.set('books', JSON.stringify(bookPile), { expires: 7 })
+    }
+  },[bookPile])
 
   return (
     <bookPileContext.Provider value={[bookPile, setBookPile]}>
