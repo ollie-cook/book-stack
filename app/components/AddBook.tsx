@@ -1,6 +1,7 @@
 'use client'
 
 import { useBookPile } from "./BookPileContext";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 export default function AddBook() {
   const [bookPile, setBookPile] = useBookPile()
@@ -13,7 +14,8 @@ export default function AddBook() {
     const newBook = {
       id: guid,
       title: "New Book",
-      colour: "blue",
+      author: "Author",
+      colour: "#16A5A5",
       width: width,
     }
 
@@ -21,8 +23,9 @@ export default function AddBook() {
   }
   
   return (
-    <button onClick={addBook} className="absolute">
+    <button onClick={addBook} className="absolute top-4 left-4 p-2 bg-amber-300 rounded-lg flex items-center hover:bg-amber-400">
       Add Book
+      <IoIosAddCircleOutline className="inline h-8 w-8 ml-1" />
     </button>
   )
 }

@@ -7,7 +7,7 @@ export default function BookPile() {
   const [bookPile] = useBookPile()
 
   return (
-    <div className="min-h-screen w-full flex flex-col-reverse justify-start items-center bg-red-300">
+    <div className="min-h-screen w-full flex flex-col-reverse justify-start items-center">
       {
         bookPile.map(book => {
           return <Book key={book.id} book={book} />

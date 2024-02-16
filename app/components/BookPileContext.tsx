@@ -32,7 +32,7 @@ const bookPileProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (fetchedCookies == true) {
-      Cookies.set('books', JSON.stringify(bookPile), { expires: 7 })
+      Cookies.set('books', JSON.stringify(bookPile), { expires: 365 })
     }
   },[bookPile])
 
